@@ -1,6 +1,7 @@
 import { Client } from "pg";
 import { WebSocketServer } from "ws";
 import dotenv from "dotenv";
+import { createUser, getUser } from "./prisma";
 
 dotenv.config();
 const wss = new WebSocketServer({ port: 5000 });
@@ -25,4 +26,7 @@ async function connect() {
   const res = await pgClient.query("SELECT * from users;");
   console.log(res.rows);
 }
-connect();
+
+// connect();
+// createUser("s@s.com", "s");
+getUser("s@s.com");
